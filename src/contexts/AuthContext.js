@@ -9,6 +9,7 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
     const [ currentUser, setCurrentUser ] = useState()
+    const [loading, setloading] = useState(true)
 
     function signup(email, password) {
         return auth.createUserWithEmailAndPassword(email, password) //créer un user et appelle donc la fonction onAuthStateChnge
@@ -17,6 +18,7 @@ export function AuthProvider({ children }) {
     useEffect(() => {//on utilise le useeffect pour quan la fonction soit utilisé qunad le composant est mounté
         const unsubscribe = auth.onAuthStateChanged(user => {//au changement a chaque authentification la fonction est aplée et le user est definie 
             setCurrentUser(user)
+            setloading(false)
         })
         return unsubscribe //on s'unsubscribe du listener onAuthStateChanged au dessus 
     }, [])// equivalent à comonentDidMount avec les classes
@@ -28,7 +30,7 @@ export function AuthProvider({ children }) {
 
     return (
         <AuthContext.Provider value={value}>
-            {children}
+            {!loading && children}
         </AuthContext.Provider>
     )
 }

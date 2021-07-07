@@ -7,7 +7,7 @@ export default function SignUp() {
     const emailRef = useRef()
     const passwordRef = useRef()
     const passwordValidationRef = useRef()
-    const { signup, currentUser } = useAuth()
+    const { signup } = useAuth()
     const [error, setError] = useState('')
     const [loading, setloading] = useState(false)
 
@@ -32,7 +32,6 @@ export default function SignUp() {
                 <Card.Body>
                     <h2 className="text-center d-flex mt-10">S'inscrire</h2>
                     {error && <Alert variant="danger">{error}</Alert>}
-                    {currentUser.email}
                     <Form onSubmit={handleSubmit}>
                         <Form.Group className="w-100">
                             <Form.Label>Email</Form.Label>
