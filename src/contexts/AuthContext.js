@@ -19,6 +19,10 @@ export function AuthProvider({ children }) {
         return auth.createUserWithEmailAndPassword(email, password) //créer un user et appelle donc la fonction onAuthStateChnge
     }
 
+    function logout() {
+        return auth.signOut()
+    }
+
     useEffect(() => {//on utilise le useeffect pour quan la fonction soit utilisé qunad le composant est mounté
         const unsubscribe = auth.onAuthStateChanged(user => {//au changement a chaque authentification la fonction est aplée et le user est definie 
             setCurrentUser(user)
@@ -30,6 +34,7 @@ export function AuthProvider({ children }) {
     const value = {
         currentUser,
         login,
+        logout,
         signup
     }
 
