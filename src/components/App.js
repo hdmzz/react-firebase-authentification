@@ -5,6 +5,7 @@ import { Container } from "react-bootstrap"
 import { AuthProvider } from "../contexts/AuthContext"
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import PrivateRoute from "./PrivateRoute";
+import ForgotPassword from "./ForgotPassword";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <PrivateRoute exact path='/' component={DashBoard}/>
             <Route path='/signup' component={SignUp}/>
             <Route path='/login' component={Login}/>
+            <Route path='/forgot-password' component={ForgotPassword}/>
           </Switch>  
         </AuthProvider>
       </Router>

@@ -38,9 +38,12 @@ export default function Login() {
                             <Form.Label>Mot de passe</Form.Label>
                             <Form.Control ref={passwordRef} id="password" type='password' required/>
                         </Form.Group>
-                        <Button disabled={loading} className="w-100 mt-2" type="submit">Se connecter</Button>
+                        <Button disabled={loading} className="w-100 mt-3" type="submit">Se connecter</Button>
                     </Form>
                 </Card.Body>
+                <div className="w-100 text-center mt-2 mb-4">
+                    <Link to='/forgot-password'>Mot de passe oublié ?</Link>
+                </div>
             </Card>
             <div className="w-100 text-center mt-4">
                 Pas encore de compte <Link to='/signup'>S'inscrire</Link>
