@@ -23,6 +23,10 @@ export function AuthProvider({ children }) {
         return auth.signOut()
     }
 
+    function forgotPassword(email) {
+        return auth.sendPasswordResetEmail(email)
+    }
+
     useEffect(() => {//on utilise le useeffect pour quan la fonction soit utilisé qunad le composant est mounté
         const unsubscribe = auth.onAuthStateChanged(user => {//au changement a chaque authentification la fonction est aplée et le user est definie 
             setCurrentUser(user)
@@ -35,6 +39,7 @@ export function AuthProvider({ children }) {
         currentUser,
         login,
         logout,
+        forgotPassword,
         signup
     }
 
